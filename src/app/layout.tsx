@@ -9,7 +9,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Eazicred",
-  description: "Responsive lending and investment marketing pages for Eazicred.",
+  description: "Loans that change lives",
 };
 
 export default function RootLayout({
