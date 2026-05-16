@@ -16,12 +16,12 @@ function HeroSection() {
     <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
       <div className="max-w-xl">
         <SectionIntro
-          eyebrow="AI-Powered Loan Platform"
+          eyebrow=""
           title="Intelligent Capital for Modern Ambitions."
           description="Eazicred helps teams with proven traction access flexible institutional-grade investment products and financing tools."
         />
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <PrimaryButton href="/loans" label="Apply for a Loan" />
+          <PrimaryButton href="/loans/apply" label="Apply for a Loan" />
           <SecondaryButton href="/investments" label="Start Investing" />
         </div>
       </div>
@@ -33,28 +33,32 @@ function HeroSection() {
 function EcosystemSection() {
   const cards = [
     {
-      icon: "◌",
-      title: "Precision Loans",
+      title: "Working Capital Business Loan",
       description:
-        "Adaptive financing tailored to runway, revenue cycles, and institutional diligence requirements.",
-      footer: "Risk-Adjusted Designs",
+        "Suitable for SMEs to fund inventories, working capital, and business running costs.",
+      footer: "₦50,000 – ₦10,000,000 · 1–8 months · Interest upfront/weekly/monthly",
       accent: "light" as const,
     },
     {
-      icon: "◔",
-      title: "Smart Invest",
+      title: "Invoice / Purchase Order Finance",
       description:
-        "Access diversified opportunities with transparent allocation tools and performance visibility.",
-      footer: "Built for Managers",
+        "Unlock the value of future invoices and receivables today, or fund purchase orders from reputable companies.",
+      footer: "₦1,000,000 – ₦20,000,000 · 90–180 days · Lump-sum repayment",
       accent: "light" as const,
     },
     {
-      icon: "◍",
-      title: "Enterprise Security",
+      title: "Sale Lease Back",
       description:
-        "Institutional controls, verification workflows, and hardened infrastructure protect every move.",
-      footer: "Trusted by Founders",
+        "Sell an asset to us and retain possession while we meet your immediate cash requirement.",
+      footer: "Asset ₦1,000,000 – ₦20,000,000 · 1 year · Rentals monthly/bi-weekly/weekly",
       accent: "dark" as const,
+    },
+    {
+      title: "Alternative Energy Finance",
+      description:
+        "Financing for homes, business premises, and residential estates to acquire qualified energy assets.",
+      footer: "Asset ₦2,000,000 – ₦30,000,000 · Up to 2 years · Advanced rental mandatory",
+      accent: "light" as const,
     },
   ];
 
@@ -62,18 +66,124 @@ function EcosystemSection() {
     <section className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <SectionIntro
-          title="Financial Ecosystem Built for Performance"
-          description="A unified platform for borrowing, investing, and managing strategic capital with confidence."
+          title="Loan Products Built for Performance"
+          description="Flexible financing designed for SMEs, growing companies, asset-backed needs, and alternative energy projects."
         />
-        <a href="#stories" className="text-sm font-medium text-sky-500">
-          View All Services →
+        <a href="/loans" className="text-sm font-medium text-sky-500">
+          View All Loan Products →
+        </a>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {cards.map((card) => (
+          <InfoCard
+            key={card.title}
+            showIcon={false}
+            title={card.title}
+            description={card.description}
+            footer={card.footer}
+            accent={card.accent}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function InvestmentsSection() {
+  const cards = [
+    {
+      title: "Fixed Investment Note",
+      description:
+        "Commit a one-off amount for a chosen period and receive principal plus accrued interest in a lump sum at maturity.",
+      footer: "Min ₦1,000,000 · 1–12 months (renewable) · Top-up anytime",
+      accent: "light" as const,
+    },
+    {
+      title: "Steady Income Plan",
+      description:
+        "Earn guaranteed periodic income paid weekly, monthly, quarterly, annually, or as desired—with reinvestment options.",
+      footer: "Min ₦1,000,000 · 6–12 months (renewable) · Periodic payouts",
+      accent: "light" as const,
+    },
+    {
+      title: "Upfront Interest Plan",
+      description:
+        "Get upfront interest immediately while your principal is paid at maturity or rolled over for another term.",
+      footer: "Min ₦500,000 · 6–12 months (renewable) · Upfront returns",
+      accent: "dark" as const,
+    },
+    {
+      title: "Eazicred Vault Plan",
+      description:
+        "A disciplined plan that locks your investment until your chosen maturity date to help you stay on track.",
+      footer: "Min ₦50,000 · 3+ months · Early withdrawal forfeits interest",
+      accent: "light" as const,
+    },
+  ];
+
+  return (
+    <section className="space-y-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <SectionIntro
+          title="Investment Packages"
+          description="Choose a package that matches your goal: lump-sum growth, steady income, upfront returns, or goal-based discipline."
+        />
+        <a href="/investments" className="text-sm font-medium text-sky-500">
+          View All Investment Packages →
+        </a>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {cards.map((card) => (
+          <InfoCard
+            key={card.title}
+            title={card.title}
+            description={card.description}
+            footer={card.footer}
+            accent={card.accent}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function CaseStudiesSection() {
+  const cards = [
+    {
+      title: "Fashion Retailer – Working Capital",
+      description: "₦3.5M for 6 months · Stock up before December peak.",
+      footer: "Revenue grew 62% YoY · Repaid in 5 months · Opened a 2nd kiosk in Ikeja",
+      accent: "light" as const,
+    },
+    {
+      title: "Catering Business – Equipment Finance",
+      description: "₦7.2M for 12 months · Industrial ovens + delivery van.",
+      footer: "Doubled capacity · Won 3 corporate contracts · Created 8 new jobs",
+      accent: "dark" as const,
+    },
+    {
+      title: "Cold Room Operator – Energy Solution",
+      description: "₦8M for 12 months · Solar + inverter to cut diesel costs.",
+      footer: "Diesel spend down 70% · Saved ₦450k/month · Loan serviced from savings",
+      accent: "light" as const,
+    },
+  ];
+
+  return (
+    <section className="space-y-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <SectionIntro
+          title="Case Studies"
+          description="See how businesses use Eazicred financing to grow revenue, expand operations, and improve resilience."
+        />
+        <a href="/case-studies" className="text-sm font-medium text-sky-500">
+          View All Case Studies →
         </a>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         {cards.map((card) => (
           <InfoCard
             key={card.title}
-            icon={<span className="text-sm">{card.icon}</span>}
             title={card.title}
             description={card.description}
             footer={card.footer}
@@ -95,12 +205,16 @@ function StoriesSection() {
         <p className="text-sm font-semibold text-slate-950">
           Real Progress, <span className="text-sky-400">Real Stories.</span>
         </p>
-        <div className="mt-4 flex gap-1 text-emerald-400">
-          <span>★</span>
-          <span>★</span>
-          <span>★</span>
-          <span>★</span>
-          <span>★</span>
+        <div className="mt-4 flex gap-1">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <img
+              key={index}
+              src="/logo.png"
+              alt=""
+              className="h-4 w-4 object-contain"
+              loading="lazy"
+            />
+          ))}
         </div>
         <p className="mt-4 text-sm leading-7 text-slate-500">
           “The team expedited our raise and working-capital plan in a way that
@@ -109,7 +223,7 @@ function StoriesSection() {
         <div className="mt-6 flex items-center gap-3">
           <div className="h-10 w-10 rounded-full bg-[linear-gradient(135deg,_#f6d1bb,_#8f5a4e)]" />
           <div>
-            <p className="text-sm font-semibold text-slate-950">Sarah James</p>
+            <p className="text-sm font-semibold text-slate-950">Sarah Njoku</p>
             <p className="text-xs text-slate-400">Founder, NorthPeak Labs</p>
           </div>
         </div>
@@ -130,7 +244,7 @@ function StoriesSection() {
         </div>
       </div>
       <div className="grid gap-4">
-        <StatsPanel label="Returns" value="$1.2B+" accent="green" />
+        <StatsPanel label="Returns" value="₦200M+" accent="green" />
         <div className="card-shadow relative min-h-[170px] overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,_#283448,_#0d1523)] text-white">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.2),_transparent_35%)]" />
           <div className="absolute inset-x-4 bottom-5 rounded-[18px] border border-white/10 bg-white/5 p-4 backdrop-blur">
@@ -152,6 +266,8 @@ export default function HomePage() {
     <AppFrame active="home">
       <HeroSection />
       <EcosystemSection />
+      <InvestmentsSection />
+      <CaseStudiesSection />
       <StoriesSection />
       <CallToAction
         title="Ready to define your financial future?"

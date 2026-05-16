@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
-type NavKey = "home" | "loans" | "investments" | "how-it-works";
+type NavKey =
+  | "home"
+  | "loans"
+  | "investments"
+  | "advisory"
+  | "case-studies"
+  | "how-it-works";
 
 type NavItem = {
   href: string;
@@ -13,31 +19,32 @@ const navItems: NavItem[] = [
   { href: "/", label: "Home", key: "home" },
   { href: "/loans", label: "Loans", key: "loans" },
   { href: "/investments", label: "Investments", key: "investments" },
+  { href: "/advisory", label: "Advisory", key: "advisory" },
+  { href: "/case-studies", label: "Case Studies", key: "case-studies" },
   { href: "/how-it-works", label: "How It Works", key: "how-it-works" },
 ];
 
 const footerColumns = [
   {
     title: "Company",
-    links: ["About Us", "Our Story", "Careers", "Contact Support"],
+    links: ["Contact Us"],
   },
   {
     title: "Resources",
-    links: ["Help Center", "Pricing", "Privacy Policy", "Risk Guide"],
+    links: ["Help Center", "Case Studies", "Privacy Policy", "Terms & Conditions"],
   },
   {
     title: "Contact",
-    links: ["support@eazicred.co", "+1 (202) 555-0184", "Mon–Fri · 8am–6pm"],
+    links: ["contact@eazicred.com", "+234 8020740286", "Mon–Fri · 8am–6pm"],
   },
 ];
 
 function BrandMark() {
   return (
     <div className="flex items-center gap-2 font-semibold text-slate-950">
-      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-950 text-xs text-white">
-        E
+      <span className="">
+        <img src="/logo.png" alt="Eazicred" className="h-[34px] w-[104px] object-contain" />
       </span>
-      <span className="text-sm tracking-tight">Eazicred</span>
     </div>
   );
 }
@@ -72,17 +79,6 @@ export function AppFrame({
               );
             })}
           </nav>
-          <div className="flex items-center gap-3 text-[13px]">
-            <Link href="#" className="text-slate-500 transition hover:text-slate-900">
-              Login
-            </Link>
-            <Link
-              href="#"
-              className="rounded-full bg-sky-400 px-4 py-2 font-medium text-white transition hover:bg-sky-500"
-            >
-              Get Started
-            </Link>
-          </div>
         </header>
         <main className="space-y-10">{children}</main>
         <footer className="mt-10 grid gap-8 border-t border-slate-100 pt-8 text-sm text-slate-500 md:grid-cols-[1.4fr_repeat(3,1fr)]">
@@ -93,11 +89,11 @@ export function AppFrame({
               move with more confidence.
             </p>
             <div className="flex gap-2">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-xs">
-                in
+              <span className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white">
+                <img src="/logo.png" alt="Eazicred" className="h-6 w-6 object-contain" />
               </span>
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-xs">
-                x
+              <span className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white">
+                <img src="/logo.png" alt="Eazicred" className="h-6 w-6 object-contain" />
               </span>
             </div>
           </div>
@@ -106,7 +102,30 @@ export function AppFrame({
               <h3 className="text-sm font-semibold text-slate-900">{column.title}</h3>
               <ul className="space-y-2 text-[13px]">
                 {column.links.map((link) => (
-                  <li key={link}>{link}</li>
+                  <li key={link}>
+                    {link === "Privacy Policy" ? (
+                      <Link href="/privacy-policy" className="transition hover:text-slate-900">
+                        {link}
+                      </Link>
+                    ) : link === "Contact Us" ? (
+                      <Link href="/contact" className="transition hover:text-slate-900">
+                        {link}
+                      </Link>
+                    ) : link === "Case Studies" ? (
+                      <Link href="/case-studies" className="transition hover:text-slate-900">
+                        {link}
+                      </Link>
+                    ) : link === "Terms & Conditions" ? (
+                      <Link
+                        href="/terms-and-conditions"
+                        className="transition hover:text-slate-900"
+                      >
+                        {link}
+                      </Link>
+                    ) : (
+                      link
+                    )}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -153,7 +172,7 @@ export function PrimaryButton({ href, label }: { href: string; label: string }) 
       href={href}
       className="rounded-md bg-sky-400 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-sky-500"
     >
-      {label}
+      <span className="text-white">{label}</span>
     </Link>
   );
 }
@@ -178,13 +197,17 @@ export function SecondaryButton({
 export function CallToAction({
   title,
   description,
+  primaryHref = "#",
   primaryLabel,
+  secondaryHref = "#",
   secondaryLabel,
 }: {
   title: string;
   description: string;
-  primaryLabel: string;
-  secondaryLabel: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
 }) {
   return (
     <section className="card-shadow overflow-hidden rounded-[28px] bg-[radial-gradient(circle_at_top,_rgba(83,174,246,0.35),_transparent_32%),linear-gradient(135deg,_#060b1c,_#142449)] px-6 py-10 text-white sm:px-10">
@@ -196,18 +219,22 @@ export function CallToAction({
           {description}
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link
-            href="#"
-            className="rounded-md bg-sky-400 px-5 py-3 text-sm font-medium text-white transition hover:bg-sky-500"
-          >
-            {primaryLabel}
-          </Link>
-          <Link
-            href="#"
-            className="rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
-          >
-            {secondaryLabel}
-          </Link>
+          {primaryLabel ? (
+            <Link
+              href={primaryHref}
+              className="rounded-md bg-sky-400 px-5 py-3 text-sm font-medium text-white transition hover:bg-sky-500"
+            >
+              {primaryLabel}
+            </Link>
+          ) : null}
+          {secondaryLabel ? (
+            <Link
+              href={secondaryHref}
+              className="rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+            >
+              {secondaryLabel}
+            </Link>
+          ) : null}
         </div>
       </div>
     </section>

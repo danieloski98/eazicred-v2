@@ -110,31 +110,22 @@ function TrustSection() {
       />
       <div className="mt-8 grid gap-4 lg:grid-cols-[1.1fr_0.5fr]">
         <InfoCard
-          icon={<span className="text-sm">◍</span>}
           title="Born from a vision to democratize institutional-grade finance."
           description="Eazicred combines underwriting technology, thoughtful product design, and real support to make sophisticated financial tools easier to access."
         />
         <div className="grid gap-4">
           <InfoCard
-            icon={<span className="text-sm">⌂</span>}
             title="Security First"
             description="Robust compliance controls and encrypted workflows keep every interaction protected."
             accent="dark"
           />
           <InfoCard
-            icon={<span className="text-sm">↗</span>}
-            title="$2B+ Managed"
+            title="₦150M+ Managed"
             description="Clear governance and high-touch advisory support across each capital pathway."
             accent="mint"
           />
         </div>
-        <div className="max-w-sm">
-          <InfoCard
-            icon={<span className="text-sm">◎</span>}
-            title="OEC Framework"
-            description="We bring together decisioning, transparency, and service into one dependable operating model."
-          />
-        </div>
+       
       </div>
     </section>
   );
@@ -161,8 +152,7 @@ export default function HowItWorksPage() {
       <TrustSection />
       <CallToAction
         title="Ready to start your journey?"
-        description="Open your account, review your options, and connect with the right Eazicred pathway today."
-        primaryLabel="Open Your Account"
+        description="Review your options, and connect with the right Eazicred pathway today."
         secondaryLabel="Talk to an Advisor"
       />
     </AppFrame>

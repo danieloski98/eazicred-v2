@@ -2,12 +2,14 @@ import { ReactNode } from "react";
 
 export function InfoCard({
   icon,
+  showIcon = true,
   title,
   description,
   accent = "light",
   footer,
 }: {
-  icon: ReactNode;
+  icon?: ReactNode;
+  showIcon?: boolean;
   title: string;
   description: string;
   accent?: "light" | "dark" | "mint";
@@ -21,12 +23,22 @@ export function InfoCard({
         : "bg-slate-50 text-slate-950";
 
   const muted = accent === "light" ? "text-slate-500" : "text-white/70";
+  const resolvedIcon = icon ?? (
+    <img
+      src="/logo.png"
+      alt=""
+      className="h-7 w-7 object-contain"
+      loading="lazy"
+    />
+  );
 
   return (
     <article className={`soft-shadow rounded-[22px] p-6 ${tone}`}>
-      <div className="mb-8 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 text-slate-700 shadow-sm">
-        {icon}
-      </div>
+      {showIcon ? (
+        <div className="mb-8 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 text-slate-700 shadow-sm">
+          {resolvedIcon}
+        </div>
+      ) : null}
       <h3 className="text-lg font-semibold tracking-[-0.03em]">{title}</h3>
       <p className={`mt-2 text-sm leading-6 ${muted}`}>{description}</p>
       {footer ? <p className={`mt-6 text-xs font-medium ${muted}`}>{footer}</p> : null}
