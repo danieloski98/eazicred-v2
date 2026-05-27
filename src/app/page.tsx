@@ -1,6 +1,5 @@
 import {
   AppFrame,
-  CallToAction,
   PrimaryButton,
   SecondaryButton,
   SectionIntro,
@@ -17,7 +16,7 @@ function HeroSection() {
       <div className="max-w-xl">
         <SectionIntro
           eyebrow=""
-          title="Intelligent Capital for Modern Ambitions."
+          title="Intelligent lending for the modern economy"
           description="Eazicred helps teams with proven traction access flexible institutional-grade investment products and financing tools."
         />
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -205,17 +204,6 @@ function StoriesSection() {
         <p className="text-sm font-semibold text-slate-950">
           Real Progress, <span className="text-sky-400">Real Stories.</span>
         </p>
-        <div className="mt-4 flex gap-1">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <img
-              key={index}
-              src="/logo.png"
-              alt=""
-              className="h-4 w-4 object-contain"
-              loading="lazy"
-            />
-          ))}
-        </div>
         <p className="mt-4 text-sm leading-7 text-slate-500">
           “The team expedited our raise and working-capital plan in a way that
           felt clear, fast, and deeply aligned with our growth targets.”
@@ -228,7 +216,39 @@ function StoriesSection() {
           </div>
         </div>
       </article>
-      <div className="card-shadow relative min-h-[260px] overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,_#070b16,_#1d2e47)]">
+      <article className="soft-shadow rounded-[24px] bg-white p-6">
+        <p className="text-sm font-semibold text-slate-950">
+          Steady Growth, <span className="text-sky-400">Clear Support.</span>
+        </p>
+        <p className="mt-4 text-sm leading-7 text-slate-500">
+          “We got the clarity we needed on pricing and timelines. The process
+          stayed transparent from application to disbursement.”
+        </p>
+        <div className="mt-6 flex items-center gap-3">
+          <div className="h-10 w-10 rounded-full bg-[linear-gradient(135deg,_#d7e7ff,_#4b6cb7)]" />
+          <div>
+            <p className="text-sm font-semibold text-slate-950">Tunde Adebayo</p>
+            <p className="text-xs text-slate-400">Operations Lead, MetroCart</p>
+          </div>
+        </div>
+      </article>
+      <article className="soft-shadow rounded-[24px] bg-white p-6">
+        <p className="text-sm font-semibold text-slate-950">
+          Faster Decisions, <span className="text-sky-400">Better Outcomes.</span>
+        </p>
+        <p className="mt-4 text-sm leading-7 text-slate-500">
+          “The team helped us align funding to our cash cycle. We scaled inventory
+          without stressing operations, and still paid down early.”
+        </p>
+        <div className="mt-6 flex items-center gap-3">
+          <div className="h-10 w-10 rounded-full bg-[linear-gradient(135deg,_#c9f3e2,_#1f7a5a)]" />
+          <div>
+            <p className="text-sm font-semibold text-slate-950">Amaka Okafor</p>
+            <p className="text-xs text-slate-400">Founder, GreenCrate</p>
+          </div>
+        </div>
+      </article>
+      {/* <div className="card-shadow relative min-h-[260px] overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,_#070b16,_#1d2e47)]">
         <div className="absolute inset-0 marketing-grid opacity-20" />
         <svg viewBox="0 0 300 280" className="absolute inset-0 h-full w-full">
           <path
@@ -242,8 +262,8 @@ function StoriesSection() {
         <div className="absolute bottom-4 left-4 rounded-2xl bg-white/8 px-3 py-2 text-xs text-white/70">
           Market Intelligence
         </div>
-      </div>
-      <div className="grid gap-4">
+      </div> */}
+      {/* <div className="grid gap-4">
         <StatsPanel label="Returns" value="₦200M+" accent="green" />
         <div className="card-shadow relative min-h-[170px] overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,_#283448,_#0d1523)] text-white">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,255,255,0.2),_transparent_35%)]" />
@@ -256,6 +276,187 @@ function StoriesSection() {
             </p>
           </div>
         </div>
+      </div> */}
+    </section>
+  );
+}
+
+function WhyChooseSection() {
+  const cards = [
+    {
+      title: "Why choose Eazicred",
+      description:
+        "Institutional-grade financing and investment tools designed for speed, clarity, and confidence.",
+      footer: "Built for SMEs, operators, and investors",
+      accent: "light" as const,
+    },
+    {
+      title: "Transparent terms",
+      description:
+        "Clear pricing, repayment structures, and product details so you can make decisions without guesswork.",
+      footer: "No surprises",
+      accent: "dark" as const,
+    },
+    {
+      title: "Fast, guided execution",
+      description:
+        "Streamlined verification and structured review workflows that keep you moving from application to funding.",
+      footer: "Designed for momentum",
+      accent: "light" as const,
+    },
+  ];
+
+  return (
+    <section className="space-y-6">
+      <SectionIntro
+        title="Why choose Eazicred"
+        description="A modern capital network built to help you borrow and invest with confidence."
+      />
+      <div className="grid gap-4 md:grid-cols-3">
+        {cards.map((card) => (
+          <InfoCard
+            key={card.title}
+            title={card.title}
+            description={card.description}
+            footer={card.footer}
+            accent={card.accent}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function HowItWorksSection() {
+  const steps = [
+    {
+      title: "Choose a product",
+      body: "Select a loan or investment package that matches your goals and timeline.",
+    },
+    {
+      title: "Apply in minutes",
+      body: "Complete your application with guided onboarding and verification checks.",
+    },
+    {
+      title: "Get funded or invested",
+      body: "Receive your offer, finalize documentation, and move capital with confidence.",
+    },
+  ];
+
+  return (
+    <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+      <div>
+        <SectionIntro
+          title="How it works"
+          description="A simple process built to keep underwriting clear while preserving institutional rigor."
+        />
+        <div className="mt-6 space-y-5">
+          {steps.map((step, index) => (
+            <div key={step.title} className="flex gap-4">
+              <div className="flex flex-col items-center">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-100 text-sm font-semibold text-sky-600">
+                  {index + 1}
+                </span>
+                {index !== steps.length - 1 ? (
+                  <span className="mt-2 h-full w-px bg-sky-100" />
+                ) : null}
+              </div>
+              <div className="pb-3">
+                <p className="text-base font-semibold text-slate-950">{step.title}</p>
+                <p className="mt-2 text-sm leading-7 text-slate-500">{step.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8">
+          <SecondaryButton href="/how-it-works" label="Learn More" />
+        </div>
+      </div>
+      <article className="card-shadow overflow-hidden rounded-[28px] bg-[linear-gradient(135deg,_#060b1c,_#142449)] p-6 text-white">
+        <p className="text-xs uppercase tracking-[0.2em] text-white/60">Get started</p>
+        <p className="mt-3 text-2xl font-semibold tracking-[-0.04em]">
+          Move from intent to execution.
+        </p>
+        <p className="mt-3 text-sm leading-7 text-white/70">
+          Compare options, submit your application, and get a clear path forward with
+          structured offers.
+        </p>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="/loans/apply"
+            className="rounded-md bg-sky-400 px-5 py-3 text-sm font-medium text-white transition hover:bg-sky-500"
+          >
+            Apply for a Loan
+          </a>
+          <a
+            href="/investments/apply"
+            className="rounded-md border border-white/20 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+          >
+            Invest Now
+          </a>
+        </div>
+      </article>
+    </section>
+  );
+}
+
+function FaqSection() {
+  const faqs = [
+    {
+      question: "Is my investment guaranteed?",
+      answer:
+        "While we strive to provide stable returns, all investments carry some risk. We recommend reviewing our terms and conditions and consulting with a financial advisor.",
+    },
+    {
+      question: "Can I withdraw my investment early?",
+      answer:
+        "Early withdrawals are possible but may be subject to fees. The specific terms depend on your chosen investment plan. Please contact our customer service for more details.",
+    },
+    {
+      question: "How are returns paid out?",
+      answer:
+        "Returns can be paid out monthly or at the end of the investment term, depending on your chosen plan. You also have the option to reinvest your returns for compound growth.",
+    },
+    {
+      question: "How do I apply for a loan?",
+      answer:
+        "Choose a loan product and submit your application. You’ll receive a review update and next steps as part of the process.",
+    },
+  ];
+
+  return (
+    <section className="space-y-6">
+      <SectionIntro
+        align="center"
+        title="FAQ"
+        description="Quick answers to common questions about borrowing and investing."
+      />
+      <div className="mx-auto grid max-w-3xl gap-3">
+        {faqs.map((item) => (
+          <details
+            key={item.question}
+            className="group soft-shadow rounded-[22px] bg-white p-5"
+          >
+            <summary className="[&::-webkit-details-marker]:hidden flex cursor-pointer list-none items-center justify-between gap-4">
+              <span className="text-sm font-semibold text-slate-950">
+                {item.question}
+              </span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4 text-slate-400 transition group-open:rotate-180"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <p className="mt-3 text-sm leading-7 text-slate-500">{item.answer}</p>
+          </details>
+        ))}
       </div>
     </section>
   );
@@ -269,12 +470,11 @@ export default function HomePage() {
       <InvestmentsSection />
       <CaseStudiesSection />
       <StoriesSection />
-      <CallToAction
-        title="Ready to define your financial future?"
-        description="Join a modern capital network designed for borrowers, operators, and investors who need clarity and speed."
-        primaryLabel="Open Your Account"
-        secondaryLabel="Speak to an Advisor"
-      />
+      <div className="space-y-14 pt-4">
+        <WhyChooseSection />
+        <HowItWorksSection />
+        <FaqSection />
+      </div>
     </AppFrame>
   );
 }
