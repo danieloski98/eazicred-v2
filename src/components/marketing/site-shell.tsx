@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 type NavKey =
   | "home"
@@ -56,12 +58,55 @@ export function AppFrame({
   active: NavKey;
   children: ReactNode;
 }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-[#ffffff] px-3 py-4 sm:px-5">
       <div className="mx-auto max-w-6xl rounded-[26px] border-[0px] border-slate-200/70 bg-white p-3 sm:p-5">
-        <header className="mb-8 flex flex-col gap-4 rounded-[18px] border border-slate-100 bg-white px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-          <BrandMark />
-          <nav className="flex flex-wrap items-center gap-2 text-[13px] text-slate-500">
+        <header className="relative mb-8 rounded-[18px] border border-slate-100 bg-white px-4 py-3">
+          <div className="flex items-center justify-between">
+            <BrandMark />
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 sm:hidden"
+              aria-label="Open menu"
+              aria-expanded={isMenuOpen}
+              onClick={() => setIsMenuOpen((current) => !current)}
+            >
+              {isMenuOpen ? (
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                  aria-hidden="true"
+                >
+                  <path d="M4 6h16" />
+                  <path d="M4 12h16" />
+                  <path d="M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+
+          <nav className="mt-4 hidden flex-wrap items-center gap-2 text-[13px] text-slate-500 sm:flex">
             {navItems.map((item) => {
               const isActive = item.key === active;
               return (
@@ -79,6 +124,27 @@ export function AppFrame({
               );
             })}
           </nav>
+          {isMenuOpen ? (
+            <nav className="mt-4 grid gap-1 rounded-[16px] border border-slate-100 bg-white p-2 sm:hidden">
+              {navItems.map((item) => {
+                const isActive = item.key === active;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`rounded-[14px] px-3 py-2 text-[13px] transition ${
+                      isActive
+                        ? "bg-sky-50 font-medium text-sky-600"
+                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+          ) : null}
         </header>
         <main className="space-y-10">{children}</main>
         <footer className="mt-10 grid gap-8 border-t border-slate-100 pt-8 text-sm text-slate-500 md:grid-cols-[1.4fr_repeat(3,1fr)]">

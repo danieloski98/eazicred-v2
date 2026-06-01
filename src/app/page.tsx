@@ -17,7 +17,7 @@ function HeroSection() {
         <SectionIntro
           eyebrow=""
           title="Intelligent lending for the modern economy"
-          description="Eazicred helps teams with proven traction access flexible institutional-grade investment products and financing tools."
+          description="Eazicred helps organizations with proven traction access financing"
         />
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <PrimaryButton href="/loans/apply" label="Apply for a Loan" />
