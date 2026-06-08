@@ -465,6 +465,7 @@ function FaqSection() {
 export default function HomePage() {
   return (
     <AppFrame active="home">
+      
       <HeroSection />
       <EcosystemSection />
       <InvestmentsSection />
